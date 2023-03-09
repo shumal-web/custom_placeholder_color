@@ -1,0 +1,6 @@
+If you want to change any color you just go static/css/main.scss and change the color code.
+thats it,
+update the module and it will work.
+
+2. I use this regx = "^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
+    which is inside models/res_partner on 9 line if you want after sometime to check others numbers also you can just try to change the regex if will work.

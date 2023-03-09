@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_incoterm" model="ir.ui.view">
+        <field name="name">res.partner.form.incoterm</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='function']" position="after">
+                <script>
+<!--                    function validatePhoneNumber() {-->
+                    // Get the phone number from the form
+                    var phoneNumber = document.getElementById("phone").value;
+                    console.log(phoneNumber)
+
+                    // Check if the phone number is blank
+                    if (phoneNumber == "") {
+                    // If so, do not modify the phone number
+                    phoneNumber = phoneNumber;
+                    } else {
+                    // Remove any special characters from the phone number
+                    phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
+
+
+                    // Check if the phone number is 10 digits long
+                    if (phoneNumber.length == 10) {
+                    // If so, add the +1 prefix
+                    phoneNumber = "+1" + phoneNumber;
+                    }
+
+                    // Check if the phone number is in the correct format
+                    var regex = /^\+?[0-9]{10,14}$/;
+                    if(!regex.test(phoneNumber)) {
+                    // If not, show an error message
+                    alert("Invalid phone number!");
+                    }
+
+                    // Format the phone number with E.164 formatting
+                    phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
+                    phoneNumber = "+" + phoneNumber;
+                    document.getElementById("phone").value = phoneNumber;
+                    }
+<!--                    }-->
+                </script>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
