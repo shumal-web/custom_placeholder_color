@@ -42,6 +42,7 @@ class ResPartner(models.Model):
                 phone = phone.replace(")", "")
                 phone = phone.replace(" ", "")
                 phone = phone.replace("-", "")
+                phone = phone.replace("+", "")
                 if not phone[1:].isdigit():
                     raise ValidationError('Phone Number is wrongly formatted!!!')
                 else:
@@ -63,6 +64,7 @@ class ResPartner(models.Model):
                     phone = phone.replace(")", "")
                     phone = phone.replace(" ", "")
                     phone = phone.replace("-", "")
+                    phone = phone.replace("+", "")
                     if not phone[1:].isdigit():
                         raise ValidationError('Phone Number is wrongly formatted!!!')
                     else:
@@ -81,6 +83,7 @@ class ResPartner(models.Model):
                     phone = phone.replace(")", "")
                     phone = phone.replace(" ", "")
                     phone = phone.replace("-", "")
+                    phone = phone.replace("+", "")
                     if not phone[1:].isdigit():
                         raise ValidationError('Phone Number is wrongly formatted!!!')
                     else:
