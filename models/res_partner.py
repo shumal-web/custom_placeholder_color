@@ -20,10 +20,15 @@ class ResPartner(models.Model):
                 phone = phone.replace(")", "")
                 phone = phone.replace(" ", "")
                 phone = phone.replace("-", "")
+                phone = phone.replace("+", "")
                 if not phone[1:].isdigit():
                     raise ValidationError('Phone Number is wrongly formatted!!!')
                 else:
-                    self.phone = phone if phone[0] == '+' else f'+{phone}'
+                    if len(phone) == 10:
+                        self.phone = f'+1{phone}'
+                    else:
+                        self.phone = f'+52{phone}'
+
             else:
                 raise ValidationError('Phone Number is wrongly formatted!!!')
 
@@ -40,7 +45,11 @@ class ResPartner(models.Model):
                 if not phone[1:].isdigit():
                     raise ValidationError('Phone Number is wrongly formatted!!!')
                 else:
-                    self.mobile = phone if phone[0] == '+' else f'+{phone}'
+                    if len(phone) == 10:
+                        self.mobile = f'+1{phone}'
+                    else:
+                        self.mobile = f'+52{phone}'
+
             else:
                 raise ValidationError('Phone Number is wrongly formatted!!!')
 
@@ -57,7 +66,11 @@ class ResPartner(models.Model):
                     if not phone[1:].isdigit():
                         raise ValidationError('Phone Number is wrongly formatted!!!')
                     else:
-                        self.phone = phone if phone[0] == '+' else f'+{phone}'
+                        if len(phone) == 10:
+                            self.phone = f'+1{phone}'
+                        else:
+                            self.phone = f'+52{phone}'
+
                 else:
                     raise ValidationError('Phone Number is wrongly formatted!!!')
         if 'mobile' in vals_list:
@@ -71,7 +84,11 @@ class ResPartner(models.Model):
                     if not phone[1:].isdigit():
                         raise ValidationError('Phone Number is wrongly formatted!!!')
                     else:
-                        self.mobile = phone if phone[0] == '+' else f'+{phone}'
+                        if len(phone) == 10:
+                            self.mobile = f'+1{phone}'
+                        else:
+                            self.mobile = f'+52{phone}'
+
                 else:
                     raise ValidationError('Phone Number is wrongly formatted!!!')
         return super(ResPartner, self).create(vals_list)
